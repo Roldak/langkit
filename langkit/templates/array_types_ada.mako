@@ -32,7 +32,7 @@
       function ${cls.to_internal_converter}
          (Value : ${cls.api_name}
           % if cls.conversion_requires_context:
-            Context : Internal_Context
+            ; Context : Internal_Context
           % endif
           ) return ${cls.name};
    % endif
@@ -63,7 +63,7 @@
       function ${cls.to_internal_converter}
          (Value : ${cls.api_name}
           % if cls.conversion_requires_context:
-            Context : Internal_Context
+            ; Context : Internal_Context
           % endif
           ) return ${cls.name}
       is
