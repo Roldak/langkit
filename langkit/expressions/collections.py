@@ -230,15 +230,15 @@ class CollectionExpression(AbstractExpression):
 
         # Only then we can build the inner expression
         with current_scope.new_child() as inner_scope:
+            if self.index_var:
+                self.index_var.add_to_scope(inner_scope)
+
             inner_expr = construct(self.expr)
 
         if with_entities:
             entity_var.abstract_var.create_local_variable(inner_scope)
         if collection_expr.type.is_list_type:
             typed_elt_var.abstract_var.create_local_variable(inner_scope)
-
-        if self.index_var:
-            self.index_var.add_to_scope(inner_scope)
 
         elt_var_inits.append(None)
 
