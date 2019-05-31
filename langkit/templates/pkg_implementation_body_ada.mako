@@ -57,7 +57,7 @@ ${(exts.with_clauses(with_clauses + [
 ## pass two def blocks, 'action', which takes the node kind as parameter, and
 ## emits the action for each matched node kind, and 'default', taking no
 ## parameter. and emitting the default action.
-<%def name="case_dispatch(pred)">
+<%def name="case_dispatch(pred, self_name='Self')">
    <%
    node_types = list(reversed(filter(pred, ctx.astnode_types)))
    concrete_types, _ = ctx.collapse_concrete_nodes(
@@ -66,7 +66,7 @@ ${(exts.with_clauses(with_clauses + [
    concrete_mappings = zip(node_types, concrete_types)
    %>
 
-   case Self.Kind is
+   case ${self_name}.Kind is
       % for node, subclasses in concrete_mappings:
          % if subclasses:
             when ${ctx.astnode_kind_set(subclasses)} =>
@@ -3198,14 +3198,23 @@ package body ${ada_lib_name}.Implementation is
          if Node = null then
             return "None";
          else
-            declare
-               Result : constant String :=
-                 (Node.Kind_Name & " "
-                  & Basename (Node.Unit) & ":"
-                  & Image (Node.Sloc_Range));
-            begin
-               return (if Decoration then "<" & Result & ">" else Result);
-            end;
+            <%self:case_dispatch
+               pred="${lambda n: n.annotations.custom_trace_image}",
+               self_name="Node">
+            <%def name="action(node)">
+               return ${node.name}_Trace_Image (${node.name} (Node));
+            </%def>
+            <%def name="default()">
+               declare
+                  Result : constant String :=
+                    (Node.Kind_Name & " "
+                     & Basename (Node.Unit) & ":"
+                     & Image (Node.Sloc_Range));
+               begin
+                  return (if Decoration then "<" & Result & ">" else Result);
+               end;
+            </%def>
+            </%self:case_dispatch>
          end if;
       end Trace_Image;
    % endif

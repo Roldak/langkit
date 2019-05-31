@@ -305,7 +305,8 @@ class Annotations(object):
     def __init__(self, repr_name=None, generic_list_type=None,
                  warn_on_node=None, rebindable=False,
                  custom_short_image=False, snaps=False,
-                 ple_unit_root=False):
+                 ple_unit_root=False,
+                 custom_trace_image=False):
         """
         Constructor for a node's annotations.
 
@@ -319,7 +320,7 @@ class Annotations(object):
         :param bool custom_short_image: Whether this AST node must use a
             custom Short_Text_Image implementation. If true, extensions must
             add the declaration and the definition of a function called
-            `[NODE_NAME]_Short_Text_Image` that takes the node in argument and
+            `[NODE_NAME]_Short_Image` that takes the node in argument and
             that returns a `Text_Type` value.
         :param bool snaps: Whether this node's SLOCs are supposed to snap or
             not. Snapping designates the behavior where the start SLOC will be
@@ -330,6 +331,7 @@ class Annotations(object):
             other nodes cannot derive from it. In the grammar, PLE unit roots
             can only appear as a child of a list node, which must be the root
             node.
+        :param bool custom_trace_image:
         """
         self.repr_name = repr_name
         self.generic_list_type = generic_list_type
@@ -338,6 +340,7 @@ class Annotations(object):
         self.custom_short_image = custom_short_image
         self._snaps = snaps
         self.ple_unit_root = ple_unit_root
+        self.custom_trace_image = custom_trace_image
 
     @inherited_annotation
     def warn_on_node(self):
