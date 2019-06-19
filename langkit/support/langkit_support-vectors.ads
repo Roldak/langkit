@@ -152,6 +152,12 @@ package Langkit_Support.Vectors is
      with Pre => Length (Self) > 0;
    --  Pop the last element from vector
 
+   procedure Cut (Self : in out Vector; Index : Iteration_Index_Type)
+     with
+       Pre => Index <= Self.Last_Index,
+       Post => Self.Last_Index = Index;
+   --  Remove all elements after ``Index`` in ``Self``.
+
    function Pop (Self : in out Vector; N : Index_Type) return Element_Type
       with Pre => N <= Self.Last_Index;
    procedure Pop (Self : in out Vector; N : Index_Type)
@@ -184,6 +190,10 @@ package Langkit_Support.Vectors is
    function Copy (Self : Vector) return Vector;
    --  Return newly allocated copy of Self
 
+   procedure Reserve (Self : in out Vector; Capacity : Positive)
+     with Inline;
+   --  Reserve Capacity elements
+
 private
 
    subtype Internal_Elements_Array is Elements_Array (Index_Type);
@@ -203,10 +213,6 @@ private
       Capacity : Natural := Small_Vector_Capacity;
       SV       : Small_Array_Type;
    end record;
-
-   procedure Reserve (Self : in out Vector; Capacity : Positive)
-     with Inline;
-   --  Reserve Capacity elements
 
    Empty_Vector : constant Vector := (E => null, Size => 0, others => <>);
 
