@@ -1641,7 +1641,7 @@ package body Langkit_Support.Adalog.Solver is
                        ("Trying to apply " & Image (Self)
                         & ", but " & Image (V) & " is not defined");
                   end if;
-                  return False;
+                  return True;
                end if;
                if Solv_Trace.Active then
                   Solv_Trace.Trace ("Var = " & Element_Image (Get_Value (V)));
