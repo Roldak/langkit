@@ -895,7 +895,7 @@ package body Langkit_Support.Adalog.Solver is
             end case;
          end loop;
 
-         if Ctx.Cut_Dead_Branches then
+         if False and then Ctx.Cut_Dead_Branches then
             --  Exponential resolution optimization: Check if any atoms
             --  *defines* the value of a var that is *used* by another atom
             --  in that solution branch.
