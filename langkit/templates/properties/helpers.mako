@@ -260,7 +260,7 @@
    overriding procedure Destroy (Self : in out ${type_name}) is
    begin
       % for i, arg_type in enumerate(refcounted_args_types):
-      Dec_Ref (Self.Field_${i});
+      null;
       % endfor
    end Destroy;
    % endif
