@@ -1,6 +1,7 @@
 ## vim: filetype=makoada
 
 with GNATCOLL.Iconv;
+with GNATCOLL.Traces;
 
 package body ${ada_lib_name}.Init is
 
@@ -19,6 +20,8 @@ package body ${ada_lib_name}.Init is
       if not GNATCOLL.Iconv.Has_Iconv then
          raise Program_Error with "Libiconv is not available";
       end if;
+
+      GNATCOLL.Traces.Parse_Config_File;
    end Initialize;
 
 end ${ada_lib_name}.Init;
