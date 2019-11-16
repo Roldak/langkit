@@ -45,9 +45,19 @@
          type_name, "Solver.Converter_Type", conv_prop.dynamic_vars
      )}
 
+   overriding function Image (Self : ${type_name}) return String;
    overriding function Convert
      (Self : ${type_name}; From : ${entity}) return ${entity}
      with Inline;
+
+   -----------
+   -- Image --
+   -----------
+   overriding function Image (Self : ${type_name}) return String
+   is
+   begin
+      return ("${conv_prop.qualname}");
+   end Image;
 
    -------------
    -- Convert --
