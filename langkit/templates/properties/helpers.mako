@@ -75,7 +75,8 @@
 
 <%def name="logic_equal(eq_prop)">
    <%
-      struct = eq_prop.struct
+      struct = eq_prop.struct.name
+      struct_entity = eq_prop.struct.entity.name
       type_name = 'Comparer_{}'.format(eq_prop.uid)
    %>
 
@@ -261,7 +262,7 @@
       % for i, arg_type in enumerate(refcounted_args_types):
       Dec_Ref (Self.Field_${i});
       % endfor
-   end Free;
+   end Destroy;
    % endif
 
    % endfor
