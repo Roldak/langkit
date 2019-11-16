@@ -1626,6 +1626,10 @@ package body Langkit_Support.Adalog.Solver is
 
          when Predicate =>
             pragma Assert (Is_Defined (Self.Target));
+            if Solv_Trace.Active then
+               Solv_Trace.Trace
+                 ("Var = " & Element_Image (Get_Value (Self.Target)));
+            end if;
             Ret := Self.Pred.Call (Get_Value (Self.Target));
 
          when N_Predicate =>
