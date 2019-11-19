@@ -367,7 +367,7 @@
 
       Self.Self_Env := AST_Envs.Create_Lexical_Env
         (Parent            => ${"No_Env_Getter" if add_env.no_parent else "G"},
-         Node              => Self,
+         Node              => ${root_node_type_name} (Self),
          Transitive_Parent => ${call_prop(add_env.transitive_parent_prop)},
          Owner             => Self.Unit);
 

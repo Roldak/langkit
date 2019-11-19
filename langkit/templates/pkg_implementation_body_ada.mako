@@ -1908,7 +1908,7 @@ package body ${ada_lib_name}.Implementation is
       function H is new Hash_Access
         (${root_node_value_type}'Class, ${root_node_type_name});
    begin
-      return H (Node);
+      return H (${root_node_type_name} (Node));
    end Hash;
 
    % if T.Bool.requires_hash_function:

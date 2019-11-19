@@ -1181,7 +1181,7 @@ package body ${ada_lib_name}.Analysis is
          Unit    : constant Internal_Unit := Node.Unit;
          Context : constant Internal_Context := Unit.Context;
       begin
-         return ((Internal   => (Node, Info),
+         return ((Internal   => (${root_node_type_name} (Node), Info),
                   Safety_Net => (Context        => Context,
                                  Context_Serial => Context.Serial_Number,
                                  Unit           => Unit,
