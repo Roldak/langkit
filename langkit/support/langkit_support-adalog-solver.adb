@@ -447,8 +447,10 @@ package body Langkit_Support.Adalog.Solver is
       begin
          if Var.Exists then
             Dummy := Get_Id (Ctx, Var.Logic_Var);
-            Verbose_Trace.Trace ("Assigning Id " & Dummy'Image
-                                 & " to var " & Image (Var.Logic_Var));
+            if Verbose_Trace.Is_Active then
+               Verbose_Trace.Trace ("Assigning Id " & Dummy'Image
+                                    & " to var " & Image (Var.Logic_Var));
+            end if;
          end if;
       end Assign_Id;
    begin
@@ -731,7 +733,9 @@ package body Langkit_Support.Adalog.Solver is
       is
          function Cleanup (Val : Boolean) return Boolean with Inline_Always
          is begin
-            Solv_Trace.Decrease_Indent;
+            if Solv_Trace.Is_Active then
+               Solv_Trace.Decrease_Indent;
+            end if;
             return Val;
          end Cleanup;
       begin
@@ -772,13 +776,17 @@ package body Langkit_Support.Adalog.Solver is
             --  every relation in order. Abort if one doesn't solve.
             for Atom of Sorted_Atoms loop
                if not Solve_Atomic (Atom) then
-                  Solv_Trace.Trace ("Failed on " & Image (Atom));
+                  if Solv_Trace.Is_Active then
+                     Solv_Trace.Trace ("Failed on " & Image (Atom));
+                  end if;
                   return Cleanup (True);
                end if;
             end loop;
 
-            Sol_Trace.Trace ("Valid solution");
-            Sol_Trace.Trace (Image (Sorted_Atoms));
+            if Sol_Trace.Is_Active then
+               Sol_Trace.Trace ("Valid solution");
+               Sol_Trace.Trace (Image (Sorted_Atoms));
+            end if;
 
             --  Call the user defined callback and return
             return Cleanup (Ctx.Cb (Var_Array (Ctx.Vars.To_Array)));
@@ -856,8 +864,11 @@ package body Langkit_Support.Adalog.Solver is
                   Id := Get_Id (Ctx, V.Logic_Var);
                   Reserve (Vars_To_Atoms, Id);
 
-                  Solv_Trace.Trace
-                    ("== Appending " & Image (Atom) & " to Vars_To_Atoms");
+                  if Solv_Trace.Is_Active then
+                     Solv_Trace.Trace
+                       ("== Appending " & Image (Atom) & " to Vars_To_Atoms");
+                  end if;
+
                   Vars_To_Atoms.Get_Access (Id).all
                     := Atom & Vars_To_Atoms.Get (Id);
                when others => null;
