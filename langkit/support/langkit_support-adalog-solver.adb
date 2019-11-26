@@ -705,10 +705,14 @@ package body Langkit_Support.Adalog.Solver is
          --  better way yet.
          for I in Appended'Range loop
             if not Appended (I) then
-               --  Error := True;
-               Solv_Trace.Trace
-                 ("Orphan relation: " & Image (Atoms.Get (I)));
-               --  return Atomic_Relation_Vectors.Empty_Array;
+               if not Allow_Orphan_Relations then
+                  Error := True;
+                  if Solv_Trace.Is_Active then
+                     Solv_Trace.Trace
+                       ("Orphan relation: " & Image (Atoms.Get (I)));
+                  end if;
+                  return Atomic_Relation_Vectors.Empty_Array;
+               end if;
             end if;
          end loop;
 
@@ -1049,6 +1053,7 @@ package body Langkit_Support.Adalog.Solver is
       begin
          Reset_Vars (Ctx, Reset_Ids => True);
          Destroy (Ctx);
+         Allow_Orphan_Relations := False;
       end Cleanup;
 
    begin

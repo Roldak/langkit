@@ -33,6 +33,8 @@ package Langkit_Support.Adalog is
    --  Exception raised when the resolution of a complex relation exceeded the
    --  number of steps allowed.
 
+   Allow_Orphan_Relations : Boolean := False;
+
    Solver_Trace : GNATCOLL.Traces.Trace_Handle := GNATCOLL.Traces.Create
      ("LANGKIT.SOLVER", Default => GNATCOLL.Traces.From_Config);
 
