@@ -887,16 +887,20 @@ package body Langkit_Support.Adalog.Solver is
       when Kind_All =>
          --  First step: gather anys and atoms in their own vectors
 
-         for Sub_Rel of Self.Rels loop
-            case Sub_Rel.Kind is
-            when Compound =>
-               --  Implicit assertion: an all can only contain an Any
-               Anys := Sub_Rel.Compound_Rel & Anys;
-            when Atomic =>
-               if not Process_Atom (Sub_Rel.Atomic_Rel) then
-                  return Cleanup (True);
-               end if;
-            end case;
+         for I in reverse Self.Rels.First_Index .. Self.Rels.Last_Index loop
+            declare
+               Sub_Rel : constant Relation := Self.Rels.Get (I);
+            begin
+               case Sub_Rel.Kind is
+               when Compound =>
+                  --  Implicit assertion: an all can only contain an Any
+                  Anys := Sub_Rel.Compound_Rel & Anys;
+               when Atomic =>
+                  if not Process_Atom (Sub_Rel.Atomic_Rel) then
+                     return Cleanup (True);
+                  end if;
+               end case;
+            end;
          end loop;
 
          if False and then Ctx.Cut_Dead_Branches then
