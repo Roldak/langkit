@@ -2964,9 +2964,8 @@ package body ${ada_lib_name}.Implementation is
    -----------
 
    function Image (Ent : ${T.entity.name}) return String is
-      Result : constant Text_Type := Text_Image (Ent);
    begin
-      return Image (Result);
+      return Trace_Image (Ent.Node);
    end Image;
 
    ---------------
