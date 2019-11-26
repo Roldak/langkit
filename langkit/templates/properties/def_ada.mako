@@ -92,18 +92,20 @@ begin
    ${gdb_property_body_start()}
 
    % if has_logging:
-      Properties_Traces.Trace
-        ("${property.qualname} ("
-        % if property._has_self_entity:
-         & Trace_Image (Ent)
-         % else:
-         & Trace_Image (Self)
-         % endif
-         % for arg in property.arguments:
-            & ", " & Trace_Image (${arg.name})
-         % endfor
-         & "):");
-      Properties_Traces.Increase_Indent;
+      if Properties_Traces.Is_Active then
+         Properties_Traces.Trace
+           ("${property.qualname} ("
+           % if property._has_self_entity:
+            & Trace_Image (Ent)
+            % else:
+            & Trace_Image (Self)
+            % endif
+            % for arg in property.arguments:
+               & ", " & Trace_Image (${arg.name})
+            % endfor
+            & "):");
+         Properties_Traces.Increase_Indent;
+      end if;
    % endif
 
    ## If this property uses env, we want to make sure lexical env caches are up
@@ -154,17 +156,21 @@ begin
 
             if Mmz_Val.Kind = Mmz_Evaluating then
                % if has_logging:
-                  Properties_Traces.Trace
-                    ("Result: infinite recursion");
+                  if Properties_Traces.Is_Active then
+                     Properties_Traces.Trace
+                       ("Result: infinite recursion");
+                  end if;
                % endif
                ${gdb_memoization_return()}
                raise Property_Error with "Infinite recursion detected";
 
             elsif Mmz_Val.Kind = Mmz_Property_Error then
                % if has_logging:
-                  Properties_Traces.Trace
-                    ("Result: Property_Error");
-                  Properties_Traces.Decrease_Indent;
+                  if Properties_Traces.Is_Active then
+                     Properties_Traces.Trace
+                       ("Result: Property_Error");
+                     Properties_Traces.Decrease_Indent;
+                  end if;
                % endif
                ${gdb_memoization_return()}
                raise Property_Error with "Memoized error";
@@ -176,9 +182,11 @@ begin
                % endif
 
                % if has_logging:
-                  Properties_Traces.Trace
-                    ("Result: " & Trace_Image (Property_Result));
-                  Properties_Traces.Decrease_Indent;
+                  if Properties_Traces.Is_Active then
+                     Properties_Traces.Trace
+                       ("Result: " & Trace_Image (Property_Result));
+                     Properties_Traces.Decrease_Indent;
+                  end if;
                % endif
                ${gdb_memoization_return()}
                return Property_Result;
@@ -247,8 +255,10 @@ begin
    % endif
 
    % if has_logging:
-      Properties_Traces.Trace ("Result: " & Trace_Image (Property_Result));
-      Properties_Traces.Decrease_Indent;
+      if Properties_Traces.Is_Active then
+         Properties_Traces.Trace ("Result: " & Trace_Image (Property_Result));
+         Properties_Traces.Decrease_Indent;
+      end if;
    % endif
 
    return Property_Result;
@@ -280,8 +290,10 @@ begin
          % endif
 
          % if has_logging:
-            Properties_Traces.Trace ("Result: Properties_Error");
-            Properties_Traces.Decrease_Indent;
+            if Properties_Traces.Is_Active then
+               Properties_Traces.Trace ("Result: Properties_Error");
+               Properties_Traces.Decrease_Indent;
+            end if;
          % endif
 
          raise;
