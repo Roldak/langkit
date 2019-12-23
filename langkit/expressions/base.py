@@ -1687,7 +1687,8 @@ class IntegerLiteralExpr(BindableLiteralExpr):
         return str(self.value)
 
     def render_ocaml_constant(self):
-        return str(self.value)
+        fmt = "{}" if self.value >= 0 else "({})"
+        return fmt.format(str(self.value))
 
     def render_introspection_constant(self):
         return 'Create_Integer ({})'.format(self.value)
