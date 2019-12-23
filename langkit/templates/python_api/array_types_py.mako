@@ -77,7 +77,10 @@ class _BaseArray(object):
 
         # Initialize the resulting array
         for i, (_, item) in enumerate(items):
-            result.items[i] = item
+            if hasattr(item, "c_value"):
+                result.items[i] = item.c_value
+            else:
+                result.items[i] = item
 
         # At this point, we know that this is successful. We don't want
         # holders to dec-ref the content so that the return array takes over
