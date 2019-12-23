@@ -881,16 +881,16 @@ let ${ocaml_api.field_name(field)}
             ## option type in ocaml. This allows user to pass the node without
             ## having to write (~node=(Some node)), they can simply write
             ## ~node.
-    ?${arg.name.lower}
+    ?${ocaml_api.field_name(arg)}
             % else:
-    ?(${arg.name.lower}=${arg.default_value.render_ocaml_constant()})
+    ?(${ocaml_api.field_name(arg)}=${arg.default_value.render_ocaml_constant()})
             % endif
          % endif
       % endfor
     (node)
       % for arg in field.arguments:
          % if arg.default_value is None:
-    (${arg.name.lower})
+    (${ocaml_api.field_name(arg)})
          % endif
       % endfor
     =
@@ -900,19 +900,19 @@ let ${ocaml_api.field_name(field)}
       (* The result of this call should already be checked by the raisable
          mechanism *)
       % for arg in field.arguments:
-      let c_${arg.name.lower} =
+      let c_${ocaml_api.field_name(arg)} =
          % if arg.default_value is not None and arg.public_type.is_entity_type:
          ## for entity default argument with use the optional label
          ## construction that hides the fact that an ommited parameter is the
          ## value None.
-           match ${arg.name.lower} with
+           match ${ocaml_api.field_name(arg)} with
            | Some node ->
                addr (${ocaml_api.unwrap_value('node', arg.public_type,
                                               '(context node).c_value')})
            | None -> allocate_n ${ocaml_api.c_type(root_entity)} ~count:1
          % else:
             <%
-               value = ocaml_api.unwrap_value(arg.name.lower, arg.public_type,
+               value = ocaml_api.unwrap_value(ocaml_api.field_name(arg), arg.public_type,
                                               '(context node).c_value')
                if arg.public_type.is_ada_record:
                   if ocaml_api.is_struct(arg.public_type):
@@ -929,7 +929,7 @@ let ${ocaml_api.field_name(field)}
         CFunctions.${field.accessor_basename.lower}
           (addr (${ocaml_api.unwrap_value('node', astnode.entity, None)}))
       % for arg in field.arguments:
-          c_${arg.name.lower}
+          c_${ocaml_api.field_name(arg)}
       % endfor
           (result_ptr)
       in
@@ -939,9 +939,9 @@ let ${ocaml_api.field_name(field)}
          %>
          % if finalize_name is not None:
             % if arg.public_type.is_ada_record:
-               ${finalize_name} (!@ c_${arg.name.lower}) ;
+               ${finalize_name} (!@ c_${ocaml_api.field_name(arg)}) ;
             % else:
-               ${finalize_name} c_${arg.name.lower} ;
+               ${finalize_name} c_${ocaml_api.field_name(arg)} ;
             % endif
          % endif
       % endfor
