@@ -91,17 +91,17 @@
         (addr c_value)
         (addr field_c_value)
       in
+         <%
+            precise_types = ocaml_api.get_field_type(field)
+         %>
+         % if len(precise_types) == 1:
+      ${ocaml_api.wrap_value('field_c_value', precise_types[0].public_type, 'context',
+        check_for_null=field.is_optional)}
+         % else:
       let node =
          ${ocaml_api.wrap_value('field_c_value', field.public_type, 'context',
              check_for_null=field.is_optional)}
       in
-         <%
-            precise_types = ocaml_api.get_field_type(field)
-         %>
-
-         % if len(precise_types) == 1:
-      node
-         % else:
       match node with
             <% some_or_nothing = 'Some ' if field.is_optional else '' %>
             % for tpe in precise_types:
