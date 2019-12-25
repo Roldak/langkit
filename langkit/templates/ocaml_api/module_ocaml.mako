@@ -940,12 +940,12 @@ let ${ocaml_api.field_name(field)}
            match ${ocaml_api.field_name(arg)} with
            | Some node ->
                addr (${ocaml_api.unwrap_value('node', arg.public_type,
-                                              '(context node).c_value')})
+                                              '(context node)')})
            | None -> allocate_n ${ocaml_api.c_type(root_entity)} ~count:1
          % else:
             <%
                value = ocaml_api.unwrap_value(ocaml_api.field_name(arg), arg.public_type,
-                                              '(context node).c_value')
+                                              '(context node)')
                if arg.public_type.is_ada_record:
                   if ocaml_api.is_struct(arg.public_type):
                      value = 'addr ({})'.format(value)

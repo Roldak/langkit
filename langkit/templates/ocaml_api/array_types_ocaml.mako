@@ -108,9 +108,6 @@ end
     let result = ${ocaml_api.struct_name(cls)}.create (List.length value) in
    % endif
     let items = result |-> ${ocaml_api.struct_name(cls)}.items in
-   % if cls.conversion_requires_context:
-    let c_context = context.AnalysisContext.c_value in
-   % endif
    % if cls.is_string_type:
     let i = ref 0 in
     let f c =
@@ -121,7 +118,7 @@ end
    % else:
     let f i v =
       items +@ i <-@
-        ${ocaml_api.unwrap_value('v', cls.element_type, 'c_context')}
+        ${ocaml_api.unwrap_value('v', cls.element_type, 'context')}
     in
     List.iteri f value;
    % endif

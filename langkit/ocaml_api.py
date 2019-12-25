@@ -322,7 +322,8 @@ class OCamlAPISettings(AbstractAPISettings):
         """
         def from_module(typ, value):
             context_arg = (
-                '{} '.format(context) if type.conversion_requires_context
+                '{}.AnalysisContext.c_value '.format(context) if type is T.Symbol
+                else '{} '.format(context) if type.conversion_requires_context
                 else ''
             )
 
