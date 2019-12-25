@@ -1,7 +1,7 @@
 ## vim: filetype=makoada
 
-with Langkit_Support.Bump_Ptr;    use Langkit_Support.Bump_Ptr;
-with Langkit_Support.Diagnostics; use Langkit_Support.Diagnostics;
+with Dependz_Support.Bump_Ptr;    use Dependz_Support.Bump_Ptr;
+with Dependz_Support.Diagnostics; use Dependz_Support.Diagnostics;
 
 with ${ada_lib_name}.Common; use ${ada_lib_name}.Common;
 use ${ada_lib_name}.Common.Token_Data_Handlers;

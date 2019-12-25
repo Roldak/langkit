@@ -3,9 +3,9 @@
 with Ada.Containers.Vectors;
 with Ada.Unchecked_Deallocation;
 
-with Langkit_Support.Diagnostics; use Langkit_Support.Diagnostics;
-with Langkit_Support.Packrat;
-with Langkit_Support.Text;        use Langkit_Support.Text;
+with Dependz_Support.Diagnostics; use Dependz_Support.Diagnostics;
+with Dependz_Support.Packrat;
+with Dependz_Support.Text;        use Dependz_Support.Text;
 
 with ${ada_lib_name}.Common; use ${ada_lib_name}.Common;
 use ${ada_lib_name}.Common.Symbols;
@@ -34,7 +34,7 @@ package body ${ada_lib_name}.Parsers is
    pragma Warnings (Off, "is not referenced");
    pragma Warnings (Off, "possible aliasing problem for type");
    % for cls in ctx.astnode_types:
-      package ${cls.name}_Memos is new Langkit_Support.Packrat
+      package ${cls.name}_Memos is new Dependz_Support.Packrat
         (${cls.name}, Token_Index);
 
       % if not cls.abstract:

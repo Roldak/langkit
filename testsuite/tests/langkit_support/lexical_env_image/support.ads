@@ -3,10 +3,10 @@ with Ada.Unchecked_Deallocation;
 
 with System;
 
-with Langkit_Support.Lexical_Env;
-with Langkit_Support.Symbols;
-with Langkit_Support.Text;  use Langkit_Support.Text;
-with Langkit_Support.Types; use Langkit_Support.Types;
+with Dependz_Support.Lexical_Env;
+with Dependz_Support.Symbols;
+with Dependz_Support.Text;  use Dependz_Support.Text;
+with Dependz_Support.Types; use Dependz_Support.Types;
 
 package Support is
 
@@ -45,10 +45,10 @@ package Support is
      (Dummy_Index : Precomputed_Symbol_Index) return Text_Type
    is (raise Program_Error);
 
-   package Symbols is new Langkit_Support.Symbols
+   package Symbols is new Dependz_Support.Symbols
      (Precomputed_Symbol_Index, Precomputed_Symbol);
 
-   package Envs is new Langkit_Support.Lexical_Env
+   package Envs is new Dependz_Support.Lexical_Env
      (Precomputed_Symbol_Index => Precomputed_Symbol_Index,
       Precomputed_Symbol       => Precomputed_Symbol,
       Symbols                  => Symbols,

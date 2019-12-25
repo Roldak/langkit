@@ -7,7 +7,7 @@ from langkit.template_utils import Renderer
 
 class LangkitSupport(object):
     """
-    Helper class to generate a project file to build Langkit_Support.
+    Helper class to generate a project file to build Dependz_Support.
     """
 
     def __init__(self, build_dir):
@@ -16,15 +16,15 @@ class LangkitSupport(object):
     @property
     def lksp_project_file(self):
         """
-        Absolute path to the generated project file for Langkit_Support.
+        Absolute path to the generated project file for Dependz_Support.
         """
         return os.path.join(self.build_dir, 'lib', 'gnat',
-                            'langkit_support.gpr')
+                            'dependz_support.gpr')
 
     @property
     def lksp_source_dir(self):
         """
-        Absolute path to the directory that contains Langkit_Support source
+        Absolute path to the directory that contains Dependz_Support source
         files.
         """
         return os.path.join(os.path.dirname(os.path.abspath(__file__)),

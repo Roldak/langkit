@@ -190,7 +190,7 @@ class ManageScript(object):
         )
         args_parser.add_argument(
             '--no-langkit-support', action='store_true',
-            help='Assuming that Langkit_Support is already built and'
+            help='Assuming that Dependz_Support is already built and'
                  ' installed. This is useful to package the generated library'
                  ' only.'
         )
@@ -306,7 +306,7 @@ class ManageScript(object):
         )
 
         ###############################################
-        # Generate, Build and Install Langkit_Support #
+        # Generate, Build and Install Dependz_Support #
         ###############################################
 
         self.generate_lksp_parser = create_parser(
@@ -921,7 +921,7 @@ class ManageScript(object):
 
         # Install libraries
         projects = ([] if args.no_langkit_support else
-                    ['langkit_support.gpr']) + [lib_name + '.gpr']
+                    ['langkit_support_ns.gpr']) + [lib_name + '.gpr']
         for prj in projects:
             self.gprinstall(args, self.dirs.build_dir('lib', 'gnat', prj),
                             True)
@@ -981,19 +981,19 @@ class ManageScript(object):
 
     def do_generate_langkit_support(self, args):
         """
-        Generate the build tree and project file for Langkit_Support.
+        Generate the build tree and project file for Dependz_Support.
         """
         self.lksp(args).generate()
 
     def do_build_langkit_support(self, args):
         """
-        Build Langkit_Support.
+        Build Dependz_Support.
         """
         self.gprbuild(args, self.lksp(args).lksp_project_file, True)
 
     def do_install_langkit_support(self, args):
         """
-        Install Langkit_Support.
+        Install Dependz_Support.
         """
         self.gprinstall(args, self.lksp(args).lksp_project_file, True)
 

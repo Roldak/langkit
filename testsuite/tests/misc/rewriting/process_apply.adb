@@ -2,8 +2,8 @@ with Ada.Text_IO; use Ada.Text_IO;
 
 with GNATCOLL.VFS; use GNATCOLL.VFS;
 
-with Langkit_Support.Diagnostics; use Langkit_Support.Diagnostics;
-with Langkit_Support.Text;        use Langkit_Support.Text;
+with Dependz_Support.Diagnostics; use Dependz_Support.Diagnostics;
+with Dependz_Support.Text;        use Dependz_Support.Text;
 with Libfoolang.Analysis;         use Libfoolang.Analysis;
 
 procedure Process_Apply

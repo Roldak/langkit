@@ -5,8 +5,8 @@ with Ada.Text_IO;      use Ada.Text_IO;
 
 with GNATCOLL.Traces;
 
-with Langkit_Support.Adalog.Generic_Main_Support;
-with Langkit_Support.Images;
+with Dependz_Support.Adalog.Generic_Main_Support;
+with Dependz_Support.Images;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 
 --  Test stateless predicate constructor
@@ -24,11 +24,11 @@ procedure Main is
 
    function Image (Self : Val_Type) return String is
      (case Self.K is
-         when Int => Langkit_Support.Images.Stripped_Image (Self.Int_Val),
+         when Int => Dependz_Support.Images.Stripped_Image (Self.Int_Val),
          when Str => Self.String_Val.all);
 
    package Val_Support
-   is new Langkit_Support.Adalog.Generic_Main_Support (Val_Type);
+   is new Dependz_Support.Adalog.Generic_Main_Support (Val_Type);
 
    use Val_Support;
    use T_Solver;

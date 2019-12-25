@@ -5,7 +5,7 @@
 with "gnatcoll";
 with "gnatcoll_gmp";
 with "gnatcoll_iconv";
-with "langkit_support";
+with "dependz_support";
 
 library project ${lib_name} is
 

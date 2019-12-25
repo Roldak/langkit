@@ -322,7 +322,7 @@ class BaseDriver(TestDriver):
             """.format(
                 mains=', '.join('"{}"'.format(m) for m in mains),
                 lk_support=os.path.join(self.testsuite_dir, '..', 'langkit',
-                                        'support', 'langkit_support.gpr')
+                                        'support', 'dependz_support.gpr')
             ))
 
     def gprbuild(self, project_file):

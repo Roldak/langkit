@@ -18,20 +18,20 @@ with Ada.Unchecked_Conversion;
 with GNATCOLL.Traces;
 with GNATCOLL.VFS; use GNATCOLL.VFS;
 
-with Langkit_Support.Slocs; use Langkit_Support.Slocs;
-with Langkit_Support.Text;  use Langkit_Support.Text;
+with Dependz_Support.Slocs; use Dependz_Support.Slocs;
+with Dependz_Support.Text;  use Dependz_Support.Text;
 
 pragma Warnings (Off, "referenced");
-with Langkit_Support.Adalog.Abstract_Relation;
-use Langkit_Support.Adalog.Abstract_Relation;
-with Langkit_Support.Adalog.Debug;
-use Langkit_Support.Adalog.Debug;
-with Langkit_Support.Adalog.Operations;
-use Langkit_Support.Adalog.Operations;
-with Langkit_Support.Adalog.Predicates;
-use Langkit_Support.Adalog.Predicates;
-with Langkit_Support.Adalog.Pure_Relations;
-use Langkit_Support.Adalog.Pure_Relations;
+with Dependz_Support.Adalog.Abstract_Relation;
+use Dependz_Support.Adalog.Abstract_Relation;
+with Dependz_Support.Adalog.Debug;
+use Dependz_Support.Adalog.Debug;
+with Dependz_Support.Adalog.Operations;
+use Dependz_Support.Adalog.Operations;
+with Dependz_Support.Adalog.Predicates;
+use Dependz_Support.Adalog.Predicates;
+with Dependz_Support.Adalog.Pure_Relations;
+use Dependz_Support.Adalog.Pure_Relations;
 pragma Warnings (On, "referenced");
 
 with ${ada_lib_name}.Common;

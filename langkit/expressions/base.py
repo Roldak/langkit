@@ -5019,6 +5019,6 @@ def sloc_info_arg(loc):
 
     :param Location loc:
     """
-    return ('(if Langkit_Support.Adalog.Debug.Debug'
+    return ('(if Dependz_Support.Adalog.Debug.Debug'
             ' then new String\'("{}")'
             ' else null)'.format(loc.short_repr))

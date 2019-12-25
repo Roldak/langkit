@@ -1,9 +1,9 @@
-with Langkit_Support.Adalog.Abstract_Relation;
-use Langkit_Support.Adalog.Abstract_Relation;
-with Langkit_Support.Adalog.Main_Support;
-use Langkit_Support.Adalog.Main_Support;
-with Langkit_Support.Adalog.Predicates;
-use Langkit_Support.Adalog.Predicates;
+with Dependz_Support.Adalog.Abstract_Relation;
+use Dependz_Support.Adalog.Abstract_Relation;
+with Dependz_Support.Adalog.Main_Support;
+use Dependz_Support.Adalog.Main_Support;
+with Dependz_Support.Adalog.Predicates;
+use Dependz_Support.Adalog.Predicates;
 
 package Support is
 

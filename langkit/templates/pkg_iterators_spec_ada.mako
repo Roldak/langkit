@@ -4,9 +4,9 @@
 
 with GNATCOLL.Refcount;
 
-with Langkit_Support.Iterators;
-with Langkit_Support.Text; use Langkit_Support.Text;
-private with Langkit_Support.Tree_Traversal_Iterator;
+with Dependz_Support.Iterators;
+with Dependz_Support.Text; use Dependz_Support.Text;
+private with Dependz_Support.Tree_Traversal_Iterator;
 
 with ${ada_lib_name}.Analysis;      use ${ada_lib_name}.Analysis;
 with ${ada_lib_name}.Common;        use ${ada_lib_name}.Common;
@@ -56,7 +56,7 @@ package ${ada_lib_name}.Iterators is
    -- Iterators core --
    --------------------
 
-   package ${node}_Iterators is new Langkit_Support.Iterators
+   package ${node}_Iterators is new Dependz_Support.Iterators
      (Element_Type  => ${node},
       Element_Array => ${root_entity.array.api_name});
 
@@ -209,7 +209,7 @@ private
    function Last_Child_Index_For_Traverse (N : ${node}) return Natural;
    function Get_Child (N : ${node}; I : Natural) return ${node};
 
-   package Traversal_Iterators is new Langkit_Support.Tree_Traversal_Iterator
+   package Traversal_Iterators is new Dependz_Support.Tree_Traversal_Iterator
      (Node_Type         => ${node},
       No_Node           => No_${node},
       Node_Array        => ${root_entity.array.api_name},

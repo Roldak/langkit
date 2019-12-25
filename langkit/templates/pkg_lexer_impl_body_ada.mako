@@ -20,8 +20,8 @@ with GNAT.Byte_Order_Mark;
 with GNATCOLL.Iconv;
 with GNATCOLL.Mmap;    use GNATCOLL.Mmap;
 
-with Langkit_Support.Slocs; use Langkit_Support.Slocs;
-with Langkit_Support.Text;  use Langkit_Support.Text;
+with Dependz_Support.Slocs; use Dependz_Support.Slocs;
+with Dependz_Support.Text;  use Dependz_Support.Text;
 
 with ${ada_lib_name}.Common;
 use ${ada_lib_name}.Common.Symbols;

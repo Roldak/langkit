@@ -23,12 +23,12 @@ with System;
 
 with GNATCOLL.Traces;
 
-with Langkit_Support.Adalog.Debug;
-with Langkit_Support.Hashes;  use Langkit_Support.Hashes;
-with Langkit_Support.Images;  use Langkit_Support.Images;
-with Langkit_Support.Relative_Get;
-with Langkit_Support.Slocs;   use Langkit_Support.Slocs;
-with Langkit_Support.Text;    use Langkit_Support.Text;
+with Dependz_Support.Adalog.Debug;
+with Dependz_Support.Hashes;  use Dependz_Support.Hashes;
+with Dependz_Support.Images;  use Dependz_Support.Images;
+with Dependz_Support.Relative_Get;
+with Dependz_Support.Slocs;   use Dependz_Support.Slocs;
+with Dependz_Support.Text;    use Dependz_Support.Text;
 
 with ${ada_lib_name}.Analysis;   use ${ada_lib_name}.Analysis;
 with ${ada_lib_name}.Converters; use ${ada_lib_name}.Converters;
@@ -125,7 +125,7 @@ package body ${ada_lib_name}.Implementation is
    function Solve_Wrapper
      (R            : Logic_Equation;
       Context_Node : ${T.root_node.name}) return Boolean;
-   --  Wrapper for Langkit_Support.Adalog.Solve; will handle setting the debug
+   --  Wrapper for Dependz_Support.Adalog.Solve; will handle setting the debug
    --  strings in the equation if in debug mode.
 
    procedure Destroy (Env : in out Lexical_Env_Access);
@@ -1083,16 +1083,16 @@ package body ${ada_lib_name}.Implementation is
      (R            : Logic_Equation;
       Context_Node : ${T.root_node.name}) return Boolean is
    begin
-      if Context_Node /= null and then Langkit_Support.Adalog.Debug.Debug then
+      if Context_Node /= null and then Dependz_Support.Adalog.Debug.Debug then
          Context_Node.Assign_Names_To_Logic_Vars;
       end if;
 
       begin
          return Solver.Solve_First (R);
       exception
-         when Langkit_Support.Adalog.Early_Binding_Error =>
+         when Dependz_Support.Adalog.Early_Binding_Error =>
             raise Property_Error with "invalid equation for logic resolution";
-         when Langkit_Support.Adalog.Timeout_Error =>
+         when Dependz_Support.Adalog.Timeout_Error =>
             raise Property_Error with "logic resolution timed out";
       end;
    end Solve_Wrapper;
@@ -1681,10 +1681,10 @@ package body ${ada_lib_name}.Implementation is
       LS := Start_Sloc (Left.Sloc_Range);
       RS := Start_Sloc (Right.Sloc_Range);
       return (case Relation is
-              when Langkit_Support.Types.Less_Than        => LS < RS,
-              when Langkit_Support.Types.Less_Or_Equal    => LS <= RS,
-              when Langkit_Support.Types.Greater_Than     => LS > RS,
-              when Langkit_Support.Types.Greater_Or_Equal => LS >= RS);
+              when Dependz_Support.Types.Less_Than        => LS < RS,
+              when Dependz_Support.Types.Less_Or_Equal    => LS <= RS,
+              when Dependz_Support.Types.Greater_Than     => LS > RS,
+              when Dependz_Support.Types.Greater_Or_Equal => LS >= RS);
    end Compare;
 
    --------------
@@ -2694,7 +2694,7 @@ package body ${ada_lib_name}.Implementation is
          Index : Integer) return ${root_entity.name}
       is (A (Index + 1)); --  A is 1-based but Index is 0-based
 
-      function Relative_Get is new Langkit_Support.Relative_Get
+      function Relative_Get is new Dependz_Support.Relative_Get
         (Item_Type     => Entity,
          Sequence_Type => AST_Envs.Entity_Array,
          Length        => Length,

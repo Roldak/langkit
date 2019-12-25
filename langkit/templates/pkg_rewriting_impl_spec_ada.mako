@@ -12,10 +12,10 @@ with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with Ada.Strings.Unbounded.Hash;
 with Ada.Strings.Wide_Wide_Unbounded; use Ada.Strings.Wide_Wide_Unbounded;
 
-with Langkit_Support.Bump_Ptr; use Langkit_Support.Bump_Ptr;
-with Langkit_Support.Bump_Ptr_Vectors;
-with Langkit_Support.Diagnostics; use Langkit_Support.Diagnostics;
-with Langkit_Support.Text; use Langkit_Support.Text;
+with Dependz_Support.Bump_Ptr; use Dependz_Support.Bump_Ptr;
+with Dependz_Support.Bump_Ptr_Vectors;
+with Dependz_Support.Diagnostics; use Dependz_Support.Diagnostics;
+with Dependz_Support.Text; use Dependz_Support.Text;
 
 with ${ada_lib_name}.Common;   use ${ada_lib_name}.Common;
 with ${ada_lib_name}.Implementation; use ${ada_lib_name}.Implementation;
@@ -47,7 +47,7 @@ private package ${ada_lib_name}.Rewriting_Implementation is
       Hash            => Named_Hash,
       Equivalent_Keys => "=");
 
-   package Nodes_Pools is new Langkit_Support.Bump_Ptr_Vectors
+   package Nodes_Pools is new Dependz_Support.Bump_Ptr_Vectors
      (Node_Rewriting_Handle);
 
    type Rewriting_Handle_Type is record

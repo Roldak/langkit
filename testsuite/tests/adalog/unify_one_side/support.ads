@@ -1,5 +1,5 @@
-with Langkit_Support.Adalog.Main_Support;
-use Langkit_Support.Adalog.Main_Support;
+with Dependz_Support.Adalog.Main_Support;
+use Dependz_Support.Adalog.Main_Support;
 
 package Support is
    use T_Solver;

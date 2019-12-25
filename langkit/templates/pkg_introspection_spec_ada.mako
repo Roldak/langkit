@@ -3,7 +3,7 @@
 private with Ada.Finalization;
 private with Ada.Unchecked_Deallocation;
 
-with Langkit_Support.Text; use Langkit_Support.Text;
+with Dependz_Support.Text; use Dependz_Support.Text;
 
 with ${ada_lib_name}.Analysis; use ${ada_lib_name}.Analysis;
 with ${ada_lib_name}.Common;   use ${ada_lib_name}.Common;

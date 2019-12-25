@@ -6,8 +6,8 @@ with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 
 with GNATCOLL.VFS;
 
-with Langkit_Support.Diagnostics; use Langkit_Support.Diagnostics;
-with Langkit_Support.Text;        use Langkit_Support.Text;
+with Dependz_Support.Diagnostics; use Dependz_Support.Diagnostics;
+with Dependz_Support.Text;        use Dependz_Support.Text;
 
 with ${ada_lib_name}.Common; use ${ada_lib_name}.Common;
 use ${ada_lib_name}.Common.Token_Data_Handlers;

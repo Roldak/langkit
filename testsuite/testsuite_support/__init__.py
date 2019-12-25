@@ -43,7 +43,7 @@ class Testsuite(BaseTestsuite):
         self.main.add_option(
             '--coverage', '-C', action='store_true',
             help='Enable computation of code coverage for Langkit and'
-                 ' Langkit_Support. This requires coverage.py and'
+                 ' Dependz_Support. This requires coverage.py and'
                  ' GNATcoverage.'
         )
 
@@ -65,7 +65,7 @@ class Testsuite(BaseTestsuite):
 
         self.main.add_option(
             '--disable-tear-up-builds', '-B', action='store_true',
-            help='Disable the automatic build of Langkit_Support during the'
+            help='Disable the automatic build of Dependz_Support during the'
                  ' testsuite tear_up step. This is used to speed up successive'
                  ' testsuite runs during development.'
         )
@@ -95,7 +95,7 @@ class Testsuite(BaseTestsuite):
     @property
     def langkit_support_project_file(self):
         return os.path.join(self.root_dir, '..', 'langkit', 'support',
-                            'langkit_support.gpr')
+                            'langkit_support_ns.gpr')
 
     def tear_up(self):
         super(Testsuite, self).tear_up()
@@ -123,7 +123,7 @@ class Testsuite(BaseTestsuite):
                     )
                 )
 
-        # Build Langkit_Support so that each testcase does not try to build it
+        # Build Dependz_Support so that each testcase does not try to build it
         # in parallel.
         if not self.global_env['options'].disable_tear_up_builds:
             gargs = ['-p', '-P', self.langkit_support_project_file]
@@ -175,12 +175,12 @@ class Testsuite(BaseTestsuite):
                     '--output-dir', self.langkit_support_coverage_dir,
                     '--subdirs=gnatcov',
                 ] + lksp_cov_files)
-                print('HTML coverage report for Langkit_Support: {}'.format(
+                print('HTML coverage report for Dependz_Support: {}'.format(
                     os.path.join(self.langkit_support_coverage_dir,
                                  'index.html')
                 ))
             else:
-                print('No test exercised Langkit_Support: no coverage report'
+                print('No test exercised Dependz_Support: no coverage report'
                       ' to produce')
 
         super(Testsuite, self).tear_down()

@@ -24,17 +24,17 @@ with System;
 with GNATCOLL.GMP.Integers;
 with GNATCOLL.VFS; use GNATCOLL.VFS;
 
-with Langkit_Support.Adalog.Logic_Ref;
-with Langkit_Support.Adalog.Solver;
+with Dependz_Support.Adalog.Logic_Ref;
+with Dependz_Support.Adalog.Solver;
 
-with Langkit_Support.Bump_Ptr;    use Langkit_Support.Bump_Ptr;
-with Langkit_Support.Cheap_Sets;
-with Langkit_Support.Diagnostics; use Langkit_Support.Diagnostics;
-with Langkit_Support.Lexical_Env;
-with Langkit_Support.Slocs;       use Langkit_Support.Slocs;
-with Langkit_Support.Text;        use Langkit_Support.Text;
-with Langkit_Support.Types;       use Langkit_Support.Types;
-with Langkit_Support.Vectors;
+with Dependz_Support.Bump_Ptr;    use Dependz_Support.Bump_Ptr;
+with Dependz_Support.Cheap_Sets;
+with Dependz_Support.Diagnostics; use Dependz_Support.Diagnostics;
+with Dependz_Support.Lexical_Env;
+with Dependz_Support.Slocs;       use Dependz_Support.Slocs;
+with Dependz_Support.Text;        use Dependz_Support.Text;
+with Dependz_Support.Types;       use Dependz_Support.Types;
+with Dependz_Support.Vectors;
 
 with ${ada_lib_name}.Parsers; use ${ada_lib_name}.Parsers;
 with ${ada_lib_name}.Common;  use ${ada_lib_name}.Common;
@@ -124,7 +124,7 @@ private package ${ada_lib_name}.Implementation is
    --
    --  TODO??? For now the rebinding must be represented as an untyped pointer
    --  because we probably need some big refactoring to provide to
-   --  Langkit_Support.Lexical_Env a procedure that has visibility on both
+   --  Dependz_Support.Lexical_Env a procedure that has visibility on both
    --  Env_Rebindings and on the analysis unit record.
 
    function Element_Parent
@@ -145,7 +145,7 @@ private package ${ada_lib_name}.Implementation is
    type Ref_Categories is array (Ref_Category) of Boolean;
    pragma Pack (Ref_Categories);
 
-   package AST_Envs is new Langkit_Support.Lexical_Env
+   package AST_Envs is new Dependz_Support.Lexical_Env
      (Precomputed_Symbol_Index => Precomputed_Symbol_Index,
       Precomputed_Symbol       => Precomputed_Symbol,
       Symbols                  => Symbols,
@@ -481,9 +481,9 @@ private package ${ada_lib_name}.Implementation is
    function Image (Ent : ${T.entity.name}) return String;
    ${ada_doc('langkit.entity_image', 3)}
 
-   package Entity_Vars is new Langkit_Support.Adalog.Logic_Ref
+   package Entity_Vars is new Dependz_Support.Adalog.Logic_Ref
      (${T.entity.name}, Element_Image => Image);
-   package Solver is new Langkit_Support.Adalog.Solver
+   package Solver is new Dependz_Support.Adalog.Solver
      (Entity_Vars.Raw_Logic_Var);
 
    subtype Logic_Var is Entity_Vars.Raw_Var;
@@ -649,7 +649,7 @@ private package ${ada_lib_name}.Implementation is
    -- Generic list type --
    -----------------------
 
-   package Alloc_AST_List_Array is new Langkit_Support.Bump_Ptr.Array_Alloc
+   package Alloc_AST_List_Array is new Dependz_Support.Bump_Ptr.Array_Alloc
      (Element_T  => ${root_node_type_name},
       Index_Type => Positive);
 
@@ -697,7 +697,7 @@ private package ${ada_lib_name}.Implementation is
    --  Convenience wrapper for uniform types handling in code generation
 
    package ${T.root_node.array.pkg_vector} is
-      new Langkit_Support.Vectors (${T.root_node.name});
+      new Dependz_Support.Vectors (${T.root_node.name});
 
    function Is_Visible_From
      (Referenced_Env, Base_Env : Lexical_Env) return Boolean;
@@ -764,7 +764,7 @@ private package ${ada_lib_name}.Implementation is
    --  environment rerooting machinery: see Remove_Exiled_Entries and
    --  Reroot_Foreign_Nodes.
 
-   package Exiled_Entry_Vectors is new Langkit_Support.Vectors (Exiled_Entry);
+   package Exiled_Entry_Vectors is new Dependz_Support.Vectors (Exiled_Entry);
 
    type Foreign_Node_Entry is record
       Node : ${root_node_type_name};
@@ -775,7 +775,7 @@ private package ${ada_lib_name}.Implementation is
       --  Analysis unit that owns Node
    end record;
 
-   package Foreign_Node_Entry_Vectors is new Langkit_Support.Vectors
+   package Foreign_Node_Entry_Vectors is new Dependz_Support.Vectors
      (Foreign_Node_Entry);
 
    procedure Register_Destroyable
@@ -809,10 +809,10 @@ private package ${ada_lib_name}.Implementation is
    --  Simple holder to associate an object to destroy and the procedure to
    --  perform the destruction.
 
-   package Destroyable_Vectors is new Langkit_Support.Vectors
+   package Destroyable_Vectors is new Dependz_Support.Vectors
      (Destroyable_Type);
 
-   package Analysis_Unit_Sets is new Langkit_Support.Cheap_Sets
+   package Analysis_Unit_Sets is new Dependz_Support.Cheap_Sets
      (Internal_Unit, null);
 
    package Units_Maps is new Ada.Containers.Hashed_Maps

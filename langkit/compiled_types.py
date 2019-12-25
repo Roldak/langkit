@@ -2066,7 +2066,7 @@ class StructType(BaseStructType):
 
             # Entity info and the root node's entity type are not emitted as
             # regular types, because they come from the generic instantiation
-            # of Langkit_Support.Lexical_Env.
+            # of Dependz_Support.Lexical_Env.
             CompiledTypeRepo.root_grammar_class.entity_info(),
             CompiledTypeRepo.root_grammar_class.entity,
         )
@@ -3239,7 +3239,7 @@ class ArrayType(CompiledType):
         CompiledTypeRepo.array_types.add(self)
 
         # Text_Type is always defined, since it comes from
-        # Langkit_Support.Text. To avoid discrepancies in code generation,
+        # Dependz_Support.Text. To avoid discrepancies in code generation,
         # consider it is always exposed.
         if self.is_string_type:
             self.exposed = True
@@ -3309,7 +3309,7 @@ class ArrayType(CompiledType):
     @property
     def pkg_vector(self):
         """
-        Name of the Langkit_Support.Vectors package instantiation corresponding
+        Name of the Dependz_Support.Vectors package instantiation corresponding
         to this element_type.
 
         :rtype: names.Name

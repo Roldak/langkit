@@ -25,7 +25,7 @@ create_project_py = os.path.join(scripts_dir, 'create-project.py')
 build_lksp = os.path.join(scripts_dir, 'build-langkit_support.py')
 
 
-# Build Langkit_Support and make it available to gprbuild
+# Build Dependz_Support and make it available to gprbuild
 python(build_lksp, '--build-dir=lksp', '-vnone', 'generate')
 python(build_lksp, '--build-dir=lksp', '-vnone', 'build')
 add_gpr_path(os.path.abspath(os.path.join('lksp', 'lib', 'gnat')))
@@ -40,7 +40,7 @@ for lang in ('Foo', 'Bar'):
            # static link.
            '--library-types=static',
 
-           # Don't generate a project for Langkit_Support as we want to use the
+           # Don't generate a project for Dependz_Support as we want to use the
            # one we built earlier.
            '--no-langkit-support',
 

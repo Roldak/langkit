@@ -1,6 +1,6 @@
 with Ada.Text_IO; use Ada.Text_IO;
 
-with Langkit_Support.Slocs; use Langkit_Support.Slocs;
+with Dependz_Support.Slocs; use Dependz_Support.Slocs;
 
 with Libfoolang.Analysis; use Libfoolang.Analysis;
 with Libfoolang.Common;   use Libfoolang.Common;

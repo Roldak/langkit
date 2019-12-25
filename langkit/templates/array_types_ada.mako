@@ -1,7 +1,7 @@
 ## vim: filetype=makoada
 
 <%def name="public_api_decl(cls)">
-   ## We expose arrays of characters as Langkit_Support.Text.Text_Type, so we
+   ## We expose arrays of characters as Dependz_Support.Text.Text_Type, so we
    ## should not declare another type for them.
    % if not cls.element_type.is_character_type:
       type ${cls.api_name} is
@@ -178,7 +178,7 @@
    <% elt_type = cls.element_type.name %>
 
    % if cls.element_type != ctx.root_grammar_class:
-      package ${cls.pkg_vector} is new Langkit_Support.Vectors (${elt_type});
+      package ${cls.pkg_vector} is new Dependz_Support.Vectors (${elt_type});
    % endif
 
    ---------
@@ -196,7 +196,7 @@
       is
         (T.Items (Index + 1)); --  T.Items is 1-based but Index is 0-based
 
-      function Relative_Get is new Langkit_Support.Relative_Get
+      function Relative_Get is new Dependz_Support.Relative_Get
         (Item_Type     => ${elt_type},
          Sequence_Type => ${cls.name},
          Length        => Length,

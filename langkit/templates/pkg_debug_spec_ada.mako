@@ -3,8 +3,8 @@
 --  This package defines subprograms whose only purpose it to be used from a
 --  debugger. This is supposed to make developpers' life easier.
 
-with Langkit_Support.Adalog.Abstract_Relation;
-use Langkit_Support.Adalog.Abstract_Relation;
+with Dependz_Support.Adalog.Abstract_Relation;
+use Dependz_Support.Adalog.Abstract_Relation;
 
 with ${ada_lib_name}.Common;
 use ${ada_lib_name}.Common.Symbols;

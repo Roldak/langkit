@@ -17,8 +17,8 @@ use type System.Address;
 
 with GNATCOLL.Iconv;
 
-with Langkit_Support.Diagnostics; use Langkit_Support.Diagnostics;
-with Langkit_Support.Text;        use Langkit_Support.Text;
+with Dependz_Support.Diagnostics; use Dependz_Support.Diagnostics;
+with Dependz_Support.Text;        use Dependz_Support.Text;
 
 with ${ada_lib_name}.Analysis;   use ${ada_lib_name}.Analysis;
 with ${ada_lib_name}.Converters; use ${ada_lib_name}.Converters;
@@ -926,7 +926,7 @@ package body ${ada_lib_name}.Implementation.C is
       declare
          T      : Text_Type (1 .. Natural (Text.Length))
             with Import, Address => Text.Chars;
-         Image  : constant String := Langkit_Support.Text.Image (T);
+         Image  : constant String := Dependz_Support.Text.Image (T);
          Result : constant Big_Integer_Type := Create_Big_Integer (Image);
       begin
          return Wrap_Big_Integer (Result);

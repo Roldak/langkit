@@ -260,7 +260,7 @@ class CompileCtx(object):
             EnvSpec actions.
 
         :param LibraryEntity|None default_unit_provider: If provided, define a
-            Langkit_Support.Unit_Files.Unit_Provider_Access object. This object
+            Dependz_Support.Unit_Files.Unit_Provider_Access object. This object
             will be used as the default unit provider during the creation of an
             analysis context.
 
@@ -885,7 +885,7 @@ class CompileCtx(object):
                     )
 
         # We need a hash function for the metadata structure as the
-        # Langkit_Support.Lexical_Env generic package requires it.
+        # Dependz_Support.Lexical_Env generic package requires it.
         T.env_md.require_hash_function()
 
         # We expose a hash function for public entities, so we must generate

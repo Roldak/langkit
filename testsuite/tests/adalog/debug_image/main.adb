@@ -4,8 +4,8 @@ with GNAT.Source_Info;
 
 with GNATCOLL.Traces;
 
-with Langkit_Support.Adalog.Main_Support;
-use Langkit_Support.Adalog.Main_Support;
+with Dependz_Support.Adalog.Main_Support;
+use Dependz_Support.Adalog.Main_Support;
 
 --  Copy of the dyn_scheduling test. The interest is to see that debug
 --  information in relation printing works correclty, ie. that it is correctly

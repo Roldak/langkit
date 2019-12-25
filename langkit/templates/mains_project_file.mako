@@ -1,6 +1,6 @@
 ## vim: ft=makoada
 
-with "langkit_support";
+with "dependz_support";
 with "${lib_name.lower()}";
 
 project Mains is

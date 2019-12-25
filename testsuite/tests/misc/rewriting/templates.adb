@@ -3,7 +3,7 @@ with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with Ada.Text_IO;           use Ada.Text_IO;
 with Ada.Unchecked_Deallocation;
 
-with Langkit_Support.Text; use Langkit_Support.Text;
+with Dependz_Support.Text; use Dependz_Support.Text;
 
 with Libfoolang.Analysis;      use Libfoolang.Analysis;
 with Libfoolang.Common;        use Libfoolang.Common;

@@ -1,7 +1,7 @@
-with Langkit_Support.Cheap_Sets;
+with Dependz_Support.Cheap_Sets;
 
 procedure Main is
-   package Int_Sets is new Langkit_Support.Cheap_Sets
+   package Int_Sets is new Dependz_Support.Cheap_Sets
    (Integer, No_Element => -1);
 
    Int_Set : Int_Sets.Set;

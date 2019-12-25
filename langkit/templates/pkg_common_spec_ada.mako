@@ -2,10 +2,10 @@
 
 <%namespace name="exts" file="extensions.mako" />
 
-with Langkit_Support.Slocs;   use Langkit_Support.Slocs;
-with Langkit_Support.Symbols;
-with Langkit_Support.Text;    use Langkit_Support.Text;
-with Langkit_Support.Token_Data_Handlers;
+with Dependz_Support.Slocs;   use Dependz_Support.Slocs;
+with Dependz_Support.Symbols;
+with Dependz_Support.Text;    use Dependz_Support.Text;
+with Dependz_Support.Token_Data_Handlers;
 
 with GNATCOLL.GMP.Integers;
 with GNATCOLL.Traces;
@@ -53,10 +53,10 @@ package ${ada_lib_name}.Common is
    function Precomputed_Symbol
      (Index : Precomputed_Symbol_Index) return Text_Type;
 
-   package Symbols is new Langkit_Support.Symbols
+   package Symbols is new Dependz_Support.Symbols
      (Precomputed_Symbol_Index, Precomputed_Symbol);
 
-   package Token_Data_Handlers is new Langkit_Support.Token_Data_Handlers
+   package Token_Data_Handlers is new Dependz_Support.Token_Data_Handlers
      (Precomputed_Symbol_Index, Precomputed_Symbol, Symbols);
 
    use Symbols, Token_Data_Handlers;

@@ -1,7 +1,7 @@
 with Ada.Text_IO; use Ada.Text_IO;
 
-with Langkit_Support.Adalog.Main_Support;
-use Langkit_Support.Adalog.Main_Support;
+with Dependz_Support.Adalog.Main_Support;
+use Dependz_Support.Adalog.Main_Support;
 
 --  Test that the solver works properly when you have a predicate applied to a
 --  variable *before* this variable can have a value, either through a domain

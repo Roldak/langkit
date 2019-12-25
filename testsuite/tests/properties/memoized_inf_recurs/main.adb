@@ -1,7 +1,7 @@
 with Ada.Exceptions; use Ada.Exceptions;
 with Ada.Text_IO;    use Ada.Text_IO;
 
-with Langkit_Support.Diagnostics; use Langkit_Support.Diagnostics;
+with Dependz_Support.Diagnostics; use Dependz_Support.Diagnostics;
 
 with Libfoolang.Analysis; use Libfoolang.Analysis;
 with Libfoolang.Common;   use Libfoolang.Common;

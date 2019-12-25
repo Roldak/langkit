@@ -80,7 +80,7 @@ def instantiate_templates(doc_dict):
 base_langkit_docs = {
     'langkit.initialize': """
         Initialize the library. Must be called before anything else from this
-        library and from Langkit_Support.
+        library and from Dependz_Support.
     """,
 
     #

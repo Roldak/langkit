@@ -1,11 +1,11 @@
 with Ada.Text_IO; use Ada.Text_IO;
 
-with Langkit_Support.Array_Utils;
+with Dependz_Support.Array_Utils;
 
 procedure Main is
 
    type Int_Array is array (Positive range <>) of Integer;
-   package Int_Arrays is new Langkit_Support.Array_Utils
+   package Int_Arrays is new Dependz_Support.Array_Utils
      (Index_Type   => Positive,
       Element_Type => Integer,
       Array_Type   => Int_Array);

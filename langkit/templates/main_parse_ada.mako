@@ -10,7 +10,7 @@ with Ada.Text_IO;               use Ada.Text_IO;
 
 with GNATCOLL.Opt_Parse;
 
-with Langkit_Support.Slocs; use Langkit_Support.Slocs;
+with Dependz_Support.Slocs; use Dependz_Support.Slocs;
 
 with ${ada_lib_name}.Analysis;  use ${ada_lib_name}.Analysis;
 with ${ada_lib_name}.Common;    use ${ada_lib_name}.Common;

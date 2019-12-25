@@ -1,4 +1,4 @@
-with Langkit_Support.Text; use Langkit_Support.Text;
+with Dependz_Support.Text; use Dependz_Support.Text;
 with Libfoolang.Common;    use Libfoolang.Common;
 
 package Pkg is

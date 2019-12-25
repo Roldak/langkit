@@ -2,8 +2,8 @@ with Ada.Text_IO; use Ada.Text_IO;
 
 with GNATCOLL.VFS; use GNATCOLL.VFS;
 
-with Langkit_Support.Slocs; use Langkit_Support.Slocs;
-with Langkit_Support.Text;  use Langkit_Support.Text;
+with Dependz_Support.Slocs; use Dependz_Support.Slocs;
+with Dependz_Support.Text;  use Dependz_Support.Text;
 
 with Libfoolang.Analysis; use Libfoolang.Analysis;
 with Libfoolang.Common;   use Libfoolang.Common;

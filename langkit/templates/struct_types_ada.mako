@@ -49,7 +49,7 @@
       % endif
    ;
 
-   package Boxed_${cls.api_name} is new Langkit_Support.Boxes
+   package Boxed_${cls.api_name} is new Dependz_Support.Boxes
      (${cls.public_record_type}, Refcount, Set_Refcount, Release);
 
    type ${cls.api_name} is new Boxed_${cls.api_name}.Reference;

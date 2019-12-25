@@ -72,7 +72,7 @@
       --  Wrapper around the Length primitive to get the compiler happy for the
       --  the package instantiation below.
 
-      function Relative_Get is new Langkit_Support.Relative_Get
+      function Relative_Get is new Dependz_Support.Relative_Get
         (Item_Type     => ${element_type.name},
          Sequence_Type => ${type_name},
          Length        => Length,

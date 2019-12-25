@@ -1,9 +1,9 @@
 with Ada.Text_IO; use Ada.Text_IO;
 
-with Langkit_Support.Functional_Lists;
+with Dependz_Support.Functional_Lists;
 
 procedure Main is
-   package Int_Lists is new Langkit_Support.Functional_Lists (Integer);
+   package Int_Lists is new Dependz_Support.Functional_Lists (Integer);
    use Int_Lists;
 
    A : List := Create;

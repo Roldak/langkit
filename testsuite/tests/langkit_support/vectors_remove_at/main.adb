@@ -1,10 +1,10 @@
 with Ada.Text_IO;              use Ada.Text_IO;
 
-with Langkit_Support.Vectors;
+with Dependz_Support.Vectors;
 
 procedure Main is
 
-   package Int_Vectors is new Langkit_Support.Vectors (Integer);
+   package Int_Vectors is new Dependz_Support.Vectors (Integer);
    procedure Put (V : Int_Vectors.Vector);
 
    ---------

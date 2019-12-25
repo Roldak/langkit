@@ -6,8 +6,8 @@
 --  allow experiments, it is totally unsupported and the API is very likely to
 --  change in the future.
 
-with Langkit_Support.Diagnostics; use Langkit_Support.Diagnostics;
-with Langkit_Support.Text;        use Langkit_Support.Text;
+with Dependz_Support.Diagnostics; use Dependz_Support.Diagnostics;
+with Dependz_Support.Text;        use Dependz_Support.Text;
 
 with System;
 

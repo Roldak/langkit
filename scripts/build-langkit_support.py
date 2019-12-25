@@ -12,7 +12,7 @@ def main():
     m = ManageScript()
 
     args_parser = argparse.ArgumentParser(
-        description='Helper to build and install Langkit_Support'
+        description='Helper to build and install Dependz_Support'
     )
     args_parser.add_argument(
         '--build-dir', default='build',
@@ -40,14 +40,14 @@ def main():
     # Generate
     generate_parser = subparsers.add_parser(
         'generate',
-        help='Generate build tree and project file for Langkit_Support.'
+        help='Generate build tree and project file for Dependz_Support.'
     )
     generate_parser.set_defaults(cmd='generate-langkit-support')
 
     # Build
     build_parser = subparsers.add_parser(
         'build',
-        help='Build Langkit_Support.'
+        help='Build Dependz_Support.'
     )
     build_parser.add_argument(
         '--jobs', '-j', type=int, default=get_cpu_count(),
@@ -68,7 +68,7 @@ def main():
     # Install
     install_parser = subparsers.add_parser(
         'install',
-        help='Install Langkit_Support.'
+        help='Install Dependz_Support.'
     )
     install_parser.add_argument(
         'install-dir',

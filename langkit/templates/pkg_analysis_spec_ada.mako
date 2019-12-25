@@ -19,12 +19,12 @@ with Ada.Strings.Unbounded;
 with GNATCOLL.Refcount;
 
 % if any(s.exposed and not s.is_entity_type for s in ctx.struct_types):
-   private with Langkit_Support.Boxes;
+   private with Dependz_Support.Boxes;
 % endif
-with Langkit_Support.Bump_Ptr;    use Langkit_Support.Bump_Ptr;
-with Langkit_Support.Diagnostics; use Langkit_Support.Diagnostics;
-with Langkit_Support.Slocs;       use Langkit_Support.Slocs;
-with Langkit_Support.Text;        use Langkit_Support.Text;
+with Dependz_Support.Bump_Ptr;    use Dependz_Support.Bump_Ptr;
+with Dependz_Support.Diagnostics; use Dependz_Support.Diagnostics;
+with Dependz_Support.Slocs;       use Dependz_Support.Slocs;
+with Dependz_Support.Text;        use Dependz_Support.Text;
 
 with ${ada_lib_name}.Common; use ${ada_lib_name}.Common;
 use ${ada_lib_name}.Common.Token_Data_Handlers;

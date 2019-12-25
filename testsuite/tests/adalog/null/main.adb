@@ -1,5 +1,5 @@
-with Langkit_Support.Adalog.Abstract_Relation;
-use Langkit_Support.Adalog.Abstract_Relation;
+with Dependz_Support.Adalog.Abstract_Relation;
+use Dependz_Support.Adalog.Abstract_Relation;
 
 procedure Main is
    Null_Rel : Relation;
