@@ -36,18 +36,18 @@ package Dependz_Support.Adalog is
    Allow_Orphan_Relations : Boolean := False;
 
    Solver_Trace : GNATCOLL.Traces.Trace_Handle := GNATCOLL.Traces.Create
-     ("LANGKIT.SOLVER", Default => GNATCOLL.Traces.From_Config);
+     ("DEPENDZ.SOLVER", Default => GNATCOLL.Traces.From_Config);
 
    Verbose_Trace : GNATCOLL.Traces.Trace_Handle := GNATCOLL.Traces.Create
-     ("LANGKIT.SOLVER.VERBOSE", Default => GNATCOLL.Traces.From_Config);
+     ("DEPENDZ.SOLVER.VERBOSE", Default => GNATCOLL.Traces.From_Config);
 
    Trav_Trace : GNATCOLL.Traces.Trace_Handle := GNATCOLL.Traces.Create
-     ("LANGKIT.SOLVER.TRAVERSAL", Default => GNATCOLL.Traces.From_Config);
+     ("DEPENDZ.SOLVER.TRAVERSAL", Default => GNATCOLL.Traces.From_Config);
 
    Solv_Trace  : GNATCOLL.Traces.Trace_Handle := GNATCOLL.Traces.Create
-     ("LANGKIT.SOLVER.SOLVE", Default => GNATCOLL.Traces.From_Config);
+     ("DEPENDZ.SOLVER.SOLVE", Default => GNATCOLL.Traces.From_Config);
 
    Sol_Trace  : GNATCOLL.Traces.Trace_Handle := GNATCOLL.Traces.Create
-     ("LANGKIT.SOLVER.SOLUTION", Default => GNATCOLL.Traces.From_Config);
+     ("DEPENDZ.SOLVER.SOLUTION", Default => GNATCOLL.Traces.From_Config);
 
 end Dependz_Support.Adalog;
