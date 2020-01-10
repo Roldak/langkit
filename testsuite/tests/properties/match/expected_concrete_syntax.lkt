@@ -12,9 +12,11 @@ class FooNode {
 
     @export fun find_atoms (): Array[Entity[Atom]] = (
         match entity {
+            # This should match Lit .. Ref
             case a : Atom => [a]
-            case _ => null
 
+            # This should match Def | Plus .. FooNode.list
+            case _ => null
         }
     ) & (
         entity.children.mapcat((c) => c.find_atoms)
@@ -22,10 +24,14 @@ class FooNode {
 
     @export fun find_atoms_or_exprs (): Array[Entity[Expr]] = (
         match entity {
+            # This should match Lit .. Ref
             case a : Atom => [a.to[Expr]]
-            case e : Expr => [e]
-            case _ => null
 
+            # This should match the only remaining expression: Plus
+            case e : Expr => [e]
+
+            # This should match Def | FooNode.list
+            case _ => null
         }
     ) & (
         entity.children.mapcat((c) => c.find_atoms_or_exprs)
@@ -33,10 +39,15 @@ class FooNode {
 
     @export fun find_exprs (): Array[Entity[Expr]] = (
         match entity {
+            # This should match Lit .. Plus
             case e : Expr => [e]
-            case a : Atom => [a.to[Expr]]
-            case _ => null
 
+            # This should match nothing (Atom is an Expr subclass), so emit a
+            # warning.
+            case a : Atom => [a.to[Expr]]
+
+            # This should match Def | FooNode.list
+            case _ => null
         }
     ) & (
         entity.children.mapcat((c) => c.find_exprs)
@@ -52,9 +63,11 @@ class Expr : FooNode {
 
     @export fun find_refs (): Array[Entity[Ref]] = (
         match entity {
+            # This should match Ref
             case r : Ref => [r]
-            case _ => null
 
+            # This should match Lit
+            case _ => null
         }
     ) & (
         entity.children.mapcat((c) => c.to![Expr].find_refs)

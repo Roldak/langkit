@@ -14,8 +14,11 @@ class Example : FooNode {
     if (i == 0) then (raise PropertyError()) else i
 
     @export memoized fun mmz_prop (i : Integer): Integer = {
+        # Update context version by parsing a new unit
         val _ = self.fetch_example_unit
 
+        # Trigger a cache clear by calling another property
+        # (which will call Reset_Caches).
         self.internal_mmz_prop(i)
     }
 }
