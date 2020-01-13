@@ -3,14 +3,19 @@ from __future__ import absolute_import, division, print_function
 from funcy import keep
 
 from langkit.passes import GlobalPass
-import libpythonlang as lpl
 from contextlib import contextmanager
+
+try:
+    import libpythonlang as lpl
+except ImportError:
+    lpl = None
 
 templates = {}
 
 
 class DSLWalker(object):
-    ctx = lpl.AnalysisContext()
+    if lpl is not None:
+        ctx = lpl.AnalysisContext()
 
     class NoOpWalker(object):
         def __init__(self):
@@ -33,7 +38,7 @@ class DSLWalker(object):
 
     @staticmethod
     def class_from_location(loc):
-        if not loc:
+        if lpl is None or loc is None:
             return DSLWalker.NoOpWalker()
 
         unit = DSLWalker.ctx.get_from_file(loc.file)
@@ -817,6 +822,14 @@ def unparse_lang(ctx):
         ${t}
     % endfor
     """
+
+    from langkit.diagnostics import check_source_language, Severity
+    check_source_language(
+        predicate=lpl is not None,
+        message="libpythonlang not found, comments cannot be unparsed",
+        severity=Severity.warning,
+        do_raise=False
+    )
 
     lang_def = pp(sf(template))
     with open(dest_file, 'w') as f:
