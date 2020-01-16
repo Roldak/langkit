@@ -92,14 +92,9 @@ gcc -v
     done
 )
 
-# Install Langkit itself and its Python dependencies
-pip install .
+# Install Langkit itself and its dependencies
+python make.py install "$LIB_INSTALL_DIR" --gnat-install-dir="$INSTALL_DIR"
 
 # Also install flake8 to have complete style checks
 pip install flake8
 
-# RA22-015: Install libpythonlang to make it available to dsl_unparse
-(
-    cd ./contrib/python
-    ./manage.py make -P
-)
