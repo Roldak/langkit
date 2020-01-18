@@ -22,7 +22,7 @@ from langkit.diagnostics import (
     WarningSet, check_source_language, extract_library_location
 )
 from langkit.langkit_support import LangkitSupport
-from langkit.utils import Colors, Log, col, printcol
+from langkit.utils import Colors, Log, add_search_path, col, printcol
 
 
 class Directories(object):
@@ -1141,14 +1141,8 @@ class ManageScript(object):
             commands.
         """
         def add_path(name, path):
-            output_file.write(
-                '{name}={path}"{sep}${name}"; export {name}\n'.format(
-                    name=name, path=pipes.quote(path),
-                    # On Cygwin, PATH keeps the Unix syntax instead of using
-                    # the Window path separator.
-                    sep=':' if name == 'PATH' else os.path.pathsep,
-                )
-            )
+            output_file.write(add_search_path(name, path) + '\n')
+
         self.setup_environment(build_mode, add_path)
 
     def check_call(self, args, name, argv, env=None, abort_on_error=True):

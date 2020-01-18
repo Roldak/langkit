@@ -8,6 +8,7 @@ from __future__ import absolute_import, division, print_function
 
 from copy import copy
 import os
+import pipes
 import shutil
 
 
@@ -172,6 +173,23 @@ def copy_to_dir(filename, dirname):
     :param str dirname: Destination directory.
     """
     shutil.copy(filename, os.path.join(dirname, os.path.basename(filename)))
+
+
+def add_search_path(name, path):
+    """
+    Return as a string the Bourne shell commands that add the given path
+    (``path``) to the given search path variable (``name``).
+
+    :type name: str
+    :type path: str
+    :rtype str
+    """
+    return '{name}={path}"{sep}${name}"; export {name}'.format(
+        name=name, path=pipes.quote(path),
+        # On Cygwin, PATH keeps the Unix syntax instead of using
+        # the Window path separator.
+        sep=':' if name == 'PATH' else os.path.pathsep,
+    )
 
 
 try:
